@@ -52,6 +52,18 @@ const it = testEffect(
 )
 
 describe("session.system", () => {
+  it.effect("uses the DeepSeek language prompt for DeepSeek models", () =>
+    Effect.sync(() => {
+      const result = SystemPrompt.provider({
+        api: { id: "deepseek-v4-flash" },
+      } as any)
+
+      expect(result).toHaveLength(2)
+      expect(result.join("\n")).toContain("DeepSeek language policy")
+      expect(result.join("\n")).toContain("Simplified Chinese")
+    }),
+  )
+
   it.effect("skills output is sorted by name and stable across calls", () =>
     Effect.gen(function* () {
       const prompt = yield* SystemPrompt.Service
