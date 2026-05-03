@@ -58,9 +58,9 @@ describe("session.system", () => {
         api: { id: "deepseek-v4-flash" },
       } as any)
 
-      expect(result).toHaveLength(2)
-      expect(result.join("\n")).toContain("DeepSeek language policy")
-      expect(result.join("\n")).toContain("Simplified Chinese")
+      expect(result).toHaveLength(1)
+      expect(result[0]).toContain("DeepSeek 中文思考规则")
+      expect(result[0]).toContain("不要先用英文思考，再把最终答案翻译成中文")
     }),
   )
 

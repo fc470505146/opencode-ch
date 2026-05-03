@@ -8,6 +8,39 @@
   </a>
 </p>
 <p align="center">The open source AI coding agent.</p>
+
+## opencode-ch: DeepSeek 中文思考版
+
+这是 [opencode](https://github.com/anomalyco/opencode) 的一个轻量 fork，主要面向使用 DeepSeek 模型的中文用户。
+
+和原版的区别：
+
+- DeepSeek 模型不再走默认英文 `default.txt` 系统提示词。
+- DeepSeek 会路由到独立的 `packages/opencode/src/session/prompt/deepseek.txt`。
+- `deepseek.txt` 基于原版 `default.txt` 复制，保留 opencode 的基础行为规则。
+- 在 DeepSeek 专属 prompt 顶部加入中文思考规则，要求中文用户场景下 Thinking / reasoning / reasoning_content / 思考摘要和最终回复都优先使用简体中文。
+- 其他模型的系统提示词路由保持原版逻辑。
+
+当前预编译版本：
+
+- Windows x64 CLI/TUI 版本。
+- 未嵌入 Web UI，适合终端使用。
+- 没有代码签名，Windows 可能出现 SmartScreen 提示。
+
+使用方式：
+
+1. 从本仓库的 GitHub Releases 下载 `opencode-ch-windows-x64.zip`。
+2. 解压后运行：
+
+```powershell
+.\opencode.exe --version
+.\opencode.exe
+```
+
+用户仍需自行配置 provider/API key。本 fork 不包含任何 API key 或个人配置。
+
+---
+
 <p align="center">
   <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
   <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
